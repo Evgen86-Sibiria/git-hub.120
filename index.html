@@ -7,10 +7,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <h1>Заголовок</h1>
+    <script>
+        "use strict";
+        //Ветвления!!!!!
+        // const goodsCount = 0;
+        // if (goodsCount > 0) {
+        //      console.log(`Количество товаров в корзине: ${goodsCount}`);
+        //  }
+        // else { console.log(`Количество товаров в корзине: ${goodsCount}`) }
+        //тернарный оператор
+        /* goodsCount > 0
+             ? console.log(`Количество товаров в корзине: ${goodsCount}`)
+             : console.log(`Количество товаров в корзине: ${goodsCount}`);*/
+        // console.log(goodsCount > 0 ? `Количество товаров в корзине: ${goodsCount}` : `Корзина пуста.`);
+        //switch
+        /* const good = 'Яблоки';
+         switch (good) {
+             case 'Бананы':
+                 console.log(`Cтоимость бананов 50 руб.за кг`);
+                 break;
+             case 'Манго':
+                 console.log(`Cтоимость Манго 50 руб.за кг`);
+                 break;
+             case 'Яблоки':
+             case 'Груши':
+                 console.log(`Cтоимость Яблок или груш 40 руб.за кг`);
+                 break;
+
+             default: (`Неизвестный фрукт`);
+         }*/
+        //break для того чтобы убрать праваливания вниз желательно использовать для поиска равенства
+        //функция!!!!!
+        /*  let good1 = 'Яблоки';
+          let good2 = "Манго";
+          function getGoodPRICE(good) {//параметр в скобках передается из аргумента
+              switch (good) {
+                  case 'Бананы':
+                      console.log(`Cтоимость бананов 50 руб.за кг`);
+                      break;
+                  case 'Манго':
+                      console.log(`Cтоимость Манго 50 руб.за кг`);
+                      break;
+                  case 'Яблоки':
+                  case 'Груши':
+                      console.log(`Cтоимость Яблок или груш 40 руб.за кг`);
+                      break;
+  
+                  default:
+                      console.log(`Неизвестный фрукт`);
+              }
+  
+          }
+          
+         getGoodPRICE(good1);//Аргумент функции в скобках
+         getGoodPRICE(good2);
+         getGoodPRICE(prompt("Укажите фрукт"));
+          //аргумент может не совпадать с параметром*/
+        /* function getGoodPRICE(price = 'Неизвестна') {//если поставит = 'Неизвестна' то выведится 'Неизвестна
+             console.log("Цена товара: " + price);
+         }
+         getGoodPRICE('50 руб');
+         getGoodPRICE();//если создали параметр и ничего в него не передали то значение будет undefindet*/
+        /* function add(a, b) {
+             return a + b;//возвращает это значение из ф-ции в место вызова функции внизу после return функция завершается
+         }
+         const mySum = add(2, 3);
+         const mySum2 = add(17, 34);
+         console.log(mySum);
+         console.log(mySum2);*/
+        /*  console.log(getPricebyCount('Манго', 8));
+          console.log(getPricebyCount('Авокадо', 50));//
+  
+          function getPricebyCount(good, count) {   //в параметрах(скобках) название товара и его количество здесь мы использовали вышеуказанную ф-цию,чтобы она выводила нам цену товара и если товар не найден возвращает ноль в конце возвращает цену умноженную на количество
+              const price = getGoodPRICE(good);
+              if (price === null) {
+                  return null;
+              }
+              return price * count;
+          }
+          let appleprice = getGoodPRICE("Яблоки");
+          let mangoprice = getGoodPRICE('Манго');
+  
+          console.log(appleprice);
+          console.log(mangoprice);
+          function getGoodPRICE(good) {//параметр в скобках передается из аргумента
+              switch (good) {
+                  case 'Бананы':
+                      return 50;
+                  case 'Манго':
+                      return 80;
+                  case 'Яблоки':
+                  case 'Груши':
+                      return 40;
+  
+                  default:
+                      return null;
+              }
+  
+          }*/
+
+        //function declaration можно вызывать везде 
+        /* myFunc();
+         function myFunc() {
+             console.log('function declaration');
+         }
+         myFunc();
+         //function EXPRESSION вызывается только ниже
+         const myFunc2 = function () {
+             console.log('function expresion');
+         };
+         myFunc2()
+         //стрелочные функ-и
+         const func = () => console.log("стрелочная функция");
+         func();*/
+        //РЕКУРСИЯ ВЫЗОВ Ф-ЦИИ САМОЙ СЕБЯ
+        /* console.log(recursion1(3));
+       function recursion1(x) {
+            if (x == 1) {
+                return 1;
+            }
+            return recursion2(x - 1) + x;
+
+        }
+        function recursion2(x) {
+            if (x == 1) {
+                return 1;
+            }
+            return recursion3(x - 1) + x;
+
+        }
+        function recursion3(x) {
+            if (x == 1) {
+                return 1;
+            }
+            return recursion4(x - 1) + x;
+
+        } внизу тоже самое только в сокращенном виде */
+        /* const x = 0;
+         if (x <= 0 || !Number.isInteger(x)) {//!Number.isInteger(x) не является целым числом
+             console.log("Значение некоректно")
+         } else {
+             console.log(recursion(3));
+         }
+ 
+         function recursion(x) {
+ 
+             if (x === 1) {
+                 return 1;
+             }
+             return recursion(x - 1) + x;
+ 
+         }*/
+        // Практика
+        let number;//число
+        let attemts;//количество попыток
+        resetGame();
+        tryGuessNumber();
+        function resetGame() { // будет давать значения переменным
+            attemts = 0;
+            number = Math.floor(Math.random() * 100);//случайное значение от 0 до 100,где Math.random() значение от 0 до 1 далее * на 100 и  Math.floor округлили
+        }
+        function tryGuessNumber() {
+            const UserAnsver = parseInt(prompt('Введите число от 0 до 100 для выхода нажми -1'));
+            if (UserAnsver === -1) {
+                alert("До свидания");//условие для выхода из функции
+                return;//выходим // можно запусать в 1 строчку   return   alert("До свидания");
+            }
+            if (Number.isNaN(UserAnsver) || UserAnsver < 0 || UserAnsver >= 100) {//если значение введеное пользователем не является числом и в диапозоне от 0 до 100
+                alert(`Ваше число неккоректно введите число от 0 до 100`);
+                tryGuessNumber();//снова выызвали нашу функцию и вышли
+                return; // можно запусать в 1 строчку   return tryGuessNumber();
+            }
+            attemts++;// прибавили кол-во попыток на 1
+            if (UserAnsver > number) {
+                alert("Вы ввели слишком большое число");
+            }
+            else if (UserAnsver < number) {
+                alert('Слишком маленькое значение');
+            }
+            else {
+                alert(`Вы угадали с ${attemts} попытки`);
+
+            }
+            if (!confirm('Сыграем еще разок')) {// не подтвердить сообщение (нажмет отмену)то выходим confirm выводит сообщение где ты сам выбераешь действие или отмена
+                alert('До свидания');
+                return;
+            }
+
+            resetGame();//запускаем игру заново
+
+            tryGuessNumber();// вызывает саму себя пока не будет введено условие выхода равное -1(рекурсия)
+        }
+
+
+
+
+
+    </script>
 
 </body>
 
