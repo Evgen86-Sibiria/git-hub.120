@@ -14,16 +14,70 @@
         let generateNumbers;
         let attemtsCount;
         resetGame();
+        startGame();
         function resetGame() {
             generateNumbers = [];
             attemtsCount = 0;
             while (generateNumbers.length < 4) {
-                const part = Math.floor(Math)
-
+                const part = Math.floor(Math.random() * 10);//[0 до 9] сгенерировали число 
+                if (!generateNumbers.includes(part)) {//поставили условие при помощи метода includes чтобы сгенерированное число не повторялось
+                    generateNumbers.push(part);
+                }
 
 
             }
 
+        }
+        function startGame() {
+            while (true) {
+                const guess = prompt('Попробовать отгадать 4 цифры целых и положительных загаданных компьютером и имеющих разное значение,если хотите выйти наберите -1')//значение prompt в виде строки
+                if (guess === '-1') {
+                    return alert('ДО СВИДАНИЯ')
+                }
+                if (!isValidguess(guess)) {
+                    alert('Необходимо ввести 4 положительных целых числа')
+                    continue;
+                }
+                attemtsCount++;
+
+                const result = getguessresuli(guess)//создали переменную куда положили результат работы ф-ции дающуй кол-во быков и коров
+
+                if (result[0] !== 4) {
+                    alert(`Быки: ${result[0]}.Коровы:${result[1]}`);
+                    continue;//перебрасывает наверх в начало ф-ции
+                }
+                alert('Поздравляю Вы угадали все числа. Количество попыток: ' + attemtsCount);
+                if (!confirm('Хотите сыграть еще раз')) {
+                    return alert("До свидания")
+                }
+                resetGame();
+            }
+
+        }
+
+        function isValidguess(guess) {//ф-я проверяющая корректность введенных символов
+            if (guess.length !== 4) {//проверяем ответ данный пользователем длина строки не равна
+                return false;
+            }
+            for (let i = 0; i < guess.length; i++) {
+                if (Number.isNaN(Number.parseInt(guess[i]))) {//проверяем что лежит внутри чтобы было целое число и не буква
+                    return false;
+                }
+            }
+            return true;
+        }
+        function getguessresuli(guess) {
+            const result = [0, 0];//кол-о быков и коров под 1 индексом быки 2 коровы
+            for (let i = 0; i < guess.length; i++) {//проверяем далее присланный ответ на соответствие коров и быков
+                const GuessNumber = +(guess[i]);//перевели из строки в число и передали в переменную
+                if (GuessNumber === generateNumbers[i]) {//проверяем на наличие быков и если находим прибавляем на 1
+                    result[0]++;//быки
+                }
+                else if (generateNumbers.includes(GuessNumber)) {
+                    result[1]++;//коровы
+                }
+            }
+            return result;
         }
     </script>
 
