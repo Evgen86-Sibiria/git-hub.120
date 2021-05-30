@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        // игра бродилка
+        const settings = {// ОБЪЕКТ С НАСТРОЙКАМИ ИГРЫ
+            rowscount: 10,
+            colscount: 10,
+            startpositionX: 1,
+            startpositionY: 2,
+        };
+        const player = {// объект с игроком
+            x: null,
+            y: null,
+            init(startX, startY) {   // МЕТОД РАССТАВЛЯЮЩИЙ СТАРТОВЫЕ ЗНАЧЕНИЯ ПО Х И Y
+                this.x = startX;
+                this.y = startY;
+            }
+        };
+        const game = {//объект,где все буде происходить
+            settings, //settings: settings, получили объект settings cо свойством settings и передали его сюда
+            player, // player: player, ccылка
+
+            run() {
+                this.player.init(this.settings.startpositionX, this.settings.startpositionY);// обратились к перенесенному выше объекту через this
+            }
+
+        }
+        game.run();
+
+
+    </script>
+
+</body>
+
+</html>
