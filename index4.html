@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4 Объекты</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        const obj = {}; //cоздали пустой объект
+        const engine = {
+            code: "rfg789",
+            power: 350,
+        }
+        const myCar = {
+            manufacturer: 'BMW',
+            color: 'red',
+            possibleColors: ['yellow', 'white', 'gray'],//положили массив
+            engine: engine,
+            /* engine: {
+                code: "rfg789",//  то же самое что наверху
+                power: 350,
+            },
+             beep: function () {
+                   console.log('Машина сигналит');// положили ф-цию в объект(метод)
+               }
+   
+           }*/
+            beep() {
+                console.log('Машина сигналит');// положили ф-цию в объект(метод)  та же запись что и на верху только сокращ
+            }
+
+        }
+        /* console.log(myCar);//вывели объект
+          console.log(myCar.manufacturer);//вывели св-во
+          console.log(myCar['manufacturer']);// то же самое
+          const prot = 'color';
+          console.log(myCar[prot]);// найдем значение через переменную,а не через св-во
+          console.log(myCar.prot);//  не найдем потомучто нет такого св-ва
+          myCar.color = 'black;'
+          console.log(myCar);
+          myCar['color'] = 'yellow';// меняем значение свойства 2 способами
+          console.log(myCar);
+          myCar.weight = 2000;// добавили новое свойство
+          console.log(myCar);
+          delete myCar.weight;//удаляем св-во
+          console.log(myCar);
+          myCar.beep();//выполнили ф-цию под свойством beep*/
+
+        /*  console.log(myCar.possibleColors);// взяли массив
+         for (let i = 0; i < myCar.possibleColors.length; i++) {
+             console.log('Возможный цвет машины: ' + myCar.possibleColors[i]);
+         } // перебераем этот массив
+         console.log(myCar.engine.power);// берем из нашего объекта св-во вложенного внего объекта
+ 
+         // перебераем все свойства в объекте с помощью for in
+          for (const prop in myCar) {
+              console.log(`В объекте myCar ecть свойство ${prop},в этом свойстве лежит ${myCar[prop]} `); //мы в константу положили свойство
+          }
+          console.log(Object.keys(myCar));// выводим все св-ва ключи объекта myCar только перечисляемые
+          console.log(Object.getOwnPropertyNames(myCar))//то же самое только неперечисляемые*/
+        // особые свойства ф-ций
+        function incOne(param) {
+            param.num++;
+        }
+        // let a = 1;
+        let a = {
+            num: 1
+        };
+        console.log(a);//1
+        incOne(a);
+        console.log(a);// будет 1 потомучто мы передаем копию числа a 
+        //в случае с объектом мы передаем ссылку на объект поэтому будет 2 адрес в памяти выделяется один и тот же
+
+
+
+        function getObject() {
+            return {// по сути возвращаем объект в котором есть св-во number  и ф-ция sayNumber
+                number: 5,
+                sayNumber() {
+                    console.log('Верни мне номер в данном объекте ' + this.number);// внутри данной функции можно использовать ключевое слово this чтобы вытащить значение из этого объекта
+                }
+
+            };
+        }
+        let myObject = getObject();
+        myObject.sayNumber();// вывели
+
+        //проверяем есть ли свойство внутри объекта c помощью in
+        let arr = ['fuj', '233', '090'];
+        console.log(0 in arr);
+
+    </script>
+</body>
+
+</html>
