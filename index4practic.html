@@ -30,11 +30,42 @@
             settings, //settings: settings, получили объект settings cо свойством settings и передали его сюда
             player, // player: player, ccылка
 
-            run() {
+            run() {// этот метод запускает игру и содержит основную логику такую как  месторасположение(координаты),метод отвечающий за саму карту и метод отвечающий за движения игрока все методы создаются отдельно
                 this.player.init(this.settings.startpositionX, this.settings.startpositionY);// обратились к перенесенному выше объекту через this
+
+                while (true) {
+                    this.render(); //метод чтобы отобразить игру
+                    const direction = this.getDirection();//сщздаем метод для функционала движения нашего игрока
+                    if (direction === -1) {
+                        alert('До свидания');
+                        return;
+                    }
+                    alert('Двигаем игрока');
+                }
+            },
+
+            render() {
+                let map = '';
+                for (let row = 0; row < this.settings.rowscount; row++) {// this.settings.rowscount взяли значение из объекта этот цикл отвечает за строки
+                    for (let col = 0; col < this.settings.colscount; col++) {// отвечает за столбцы  this.settings.colscount  взяли значение из объекта
+                        if (this.player.y === row && this.player.x === col) {
+                            map += '0 ';
+                        }
+                        else {
+                            map += 'х ';
+                        }
+
+                    }
+                    map += '\n';// перевод строки вниз
+
+
+                }
+                console.log(map);
+
             }
 
-        }
+
+        };
         game.run();
 
 
