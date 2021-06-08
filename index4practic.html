@@ -15,8 +15,8 @@
         const settings = {// ОБЪЕКТ С НАСТРОЙКАМИ ИГРЫ
             rowscount: 10,
             colscount: 10,
-            startpositionX: 1,
-            startpositionY: 2,
+            startpositionX: 0,
+            startpositionY: 0,
         };
         const player = {// объект с игроком
             x: null,
@@ -24,6 +24,22 @@
             init(startX, startY) {   // МЕТОД РАССТАВЛЯЮЩИЙ СТАРТОВЫЕ ЗНАЧЕНИЯ ПО Х И Y
                 this.x = startX;
                 this.y = startY;
+            },
+            move(direction) {
+                switch (direction) {// ходим по полю
+                    case 2:
+                        this.y++; //вверх
+                        break;
+                    case 4:
+                        this.x--;//влево
+                        break;
+                    case 6:
+                        this.x++;//вправо
+                        break;
+                    case 8:
+                        this.y--;//вниз
+                        break;
+                }
             }
         };
         const game = {//объект,где все буде происходить
@@ -40,7 +56,7 @@
                         alert('До свидания');
                         return;
                     }
-                    alert('Двигаем игрока');
+                    this.player.move(direction);//функция отвечающая за движение верз низ право лево
                 }
             },
 
@@ -60,8 +76,20 @@
 
 
                 }
+                console.clear();// почистили карту
                 console.log(map);
 
+            },
+            getDirection() {
+                const avialableDirections = [-1, 2, 4, 6, 8];//проверяем чтобы цифры вводимые пользователем были в массиве 
+                while (true) {
+                    const direction = parseInt(prompt('Введите число,куда Вы хотите переместиться,введите -1 для выхода'));
+                    if (!avialableDirections.includes(direction)) {
+                        alert('Нужно ввести значение: ' + avialableDirections.join(', '));// метод join прибавляет то что в скобках
+                        continue;
+                    }
+                    return direction;
+                }
             }
 
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Домашка</title>
+</head>
+
+<body>
+    'use strict'
+    <script>
+
+        // 1-ое задание
+        /* var number=prompt('Введите число от 0 до 999'),
+          numberlen=number.lenght;// количество сотен десятков и единиц в числе
+         var ob={};
+         getNumberfrom(number);
+     function getNumberfrom(x){
+         if(x<0|| x>=1000){
+             alert("Неправильно ввели данные число либо меньше нуля или больше или равно 1000")
+     
+         }
+         else{
+             switch(numberlen){
+            case 3://123
+                ob.units=x[2];//присвоили eдиницы
+                ob.teens=x[1];//десятки
+                ob.hundr=x[0];// сотни
+                break;
+     
+             case 2://12
+             ob.units=x[1];//присвоили единицы
+             ob.teens=x[0];//десятки
+             break;
+     
+             default://1
+             ob.units=x;//единицы
+     
+             }
+             console.log(ob);
+         }
+         return ob;
+     
+     }*/
+        var jbl = {};
+        var num = +prompt('Введите число от 0 до 999');
+        function getNumberfrom(x) {
+            if (x > 0 && x < 1000) {
+                jbl.units = x % 10;//единицы
+                jbl.teens = parseInt(x / 10 % 10);//десятки
+                jbl.hundr = parseInt(x / 100);// сотни
+                return jbl;
+
+            }
+            else {
+                alert('Ошибка некорректнные данные');
+            }
+        }
+        getNumberfrom(num);
+        console.log(jbl);
+        alert('единиц в числе: ' + jbl.units + ' десятков в числе: ' + jbl.teens + ' coтен в числе: ' + jbl.hundr);
+
+
+        //2-ое задание
+        var goods = [
+            {
+                title: "Товар 1",
+                price: 100,
+                count: 35,
+                discount: 10
+            },
+            {
+                title: "Товар 2",
+                price: 200,
+                count: 7,
+                discount: 10
+            },
+            {
+                title: "Товар 3",
+                price: 150,
+                count: 10,
+                discount: 10
+            },
+
+        ];
+        function countBasketPrice(goods) {
+
+            let sum = 0;
+            for (let item of goods) {
+
+                sum += item.price * item.count;
+                return sum;
+            }
+        }
+        function PricebyDiscount(pricex) {
+            let sum = 0
+            for (let item of pricex) {
+                sum += item.price * item.count * (100 - 10) / 100;
+            }
+        }
+
+
+        alert("Стоимость всех товаров в корзине равно " + countBasketPrice(goods));
+        alert("Стоимость всех товаров в корзине c учетом скидки равно " + PricebyDiscount(pricex));
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

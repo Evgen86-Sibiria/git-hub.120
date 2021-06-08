@@ -64,35 +64,119 @@
           console.log(Object.keys(myCar));// выводим все св-ва ключи объекта myCar только перечисляемые
           console.log(Object.getOwnPropertyNames(myCar))//то же самое только неперечисляемые*/
         // особые свойства ф-ций
-        function incOne(param) {
-            param.num++;
-        }
-        // let a = 1;
-        let a = {
-            num: 1
+        /* function incOne(param) {
+             param.num++;
+         }
+         // let a = 1;
+         let a = {
+             num: 1
+         };
+         console.log(a);//1
+         incOne(a);
+         console.log(a);// будет 1 потомучто мы передаем копию числа a 
+         //в случае с объектом мы передаем ссылку на объект поэтому будет 2 адрес в памяти выделяется один и тот же
+ 
+ 
+ 
+         function getObject() {
+             return {// по сути возвращаем объект в котором есть св-во number  и ф-ция sayNumber
+                 number: 5,
+                 sayNumber() {
+                     console.log('Верни мне номер в данном объекте ' + this.number);// внутри данной функции можно использовать ключевое слово this чтобы вытащить значение из этого объекта
+                 }
+ 
+             };
+         }
+         let myObject = getObject();
+         myObject.sayNumber();// вывели
+ 
+         //проверяем есть ли свойство внутри объекта c помощью in
+         let arr = ['fuj', '233', '090'];
+         console.log(0 in arr);*/
+        // методы объектов чтобы привести его к массиву
+        // Object.entries,Object.keys,Object.values
+        /*let x = {
+            name: 'John',
+            lastname: "Doe",
+            age: 35,
+            getFullName() {
+                return this.name + " " + this.lastname
+            }
         };
-        console.log(a);//1
-        incOne(a);
-        console.log(a);// будет 1 потомучто мы передаем копию числа a 
-        //в случае с объектом мы передаем ссылку на объект поэтому будет 2 адрес в памяти выделяется один и тот же
+        console.log(x.getFullName());
+        x.weight = 100;
+
+        console.log(Object.entries(x));//coздали массив массивов
+        console.log(Object.keys(x));//выводим ключи объекта в 1 массиве
+        console.log(Object.values(x));//выводим значения ключей объекта в 1 массиве
 
 
-
-        function getObject() {
-            return {// по сути возвращаем объект в котором есть св-во number  и ф-ция sayNumber
-                number: 5,
-                sayNumber() {
-                    console.log('Верни мне номер в данном объекте ' + this.number);// внутри данной функции можно использовать ключевое слово this чтобы вытащить значение из этого объекта
-                }
-
-            };
+        //контекст исполнения функции(this)
+        function f() {
+            console.log(this);
         }
-        let myObject = getObject();
-        myObject.sayNumber();// вывели
 
-        //проверяем есть ли свойство внутри объекта c помощью in
-        let arr = ['fuj', '233', '090'];
-        console.log(0 in arr);
+        //вызов функции без контекста
+        f();// this=undefind
+        //вызов в контексте объекта
+        // х.f = f;//добавили ключ в объект
+        // х.f();
+        //вызов функции в контексте создания нового объекта
+        // new f();//через оператор new 
+        const personPrototype = {
+            getFullName() {
+                console.log(this.name + " " + this.lastname)
+            }
+        }
+
+        function Person(name, lastname, year) {
+            this.name = name;
+            this.lastname = lastname;
+            this.age = 2021 - year;//вызов функции конструктора для создания однотипных объектов
+            /* this.getFullName = function () {
+                 console.log(this.name + " " + this.lastname);
+             } // перебросили функцию в конструктор добавили this и = function()*/
+
+        // console.log(new Person('Василий', 'Иванов', 1986));// задали параметры в этой ф-ции с помощью this
+        //Person.prototype = personPrototype;//добавили в свойства*/
+        class People {
+            constructor(inn) {
+                this.inn = inn;
+            }
+            getInn() {
+                console.log(this.inn);
+            }
+
+        }
+
+
+        class Person extends People {// прописываем от кого наследуемся
+            constructor(name, lastname, year) {
+                super(123);
+                this.name = name;
+                this.lastname = lastname;
+                this.age = 2021 - year;
+            }
+            getFullName() {
+                console.log(this.name + " " + this.lastname)
+            }
+            getInn() {
+                this.getFullName()//переопределили метод
+                super.getInn();
+            }
+        }
+
+
+        let person1 = new Person('Jack', 'White', 1990);
+        let person2 = new Person('Jane', 'Jons', 1989);
+        // person1._proto_ = personPrototype;//в прото добавили свойства (ключи)конструктора в чем ошибка если раскомментировать не работает
+        //  person2._proto_ = personPrototype;
+        person1.getFullName();
+        person2.getFullName();///!!!! почему не запускается функция!!!!!!!!!!!!
+        person1.getInn();//добавили новое свойство и инн вывелось
+        console.log(person1);//создание с помощью конструктора
+        console.log(person2);
+        person2.getInn();
 
     </script>
 </body>
