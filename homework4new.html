@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    'use strict'
+
     <script>
+        'use strict'
 
         // 1-ое задание
         /* var number=prompt('Введите число от 0 до 999'),
@@ -44,66 +45,90 @@
          return ob;
      
      }*/
-        var jbl = {};
-        var num = +prompt('Введите число от 0 до 999');
-        function getNumberfrom(x) {
-            if (x > 0 && x < 1000) {
-                jbl.units = x % 10;//единицы
-                jbl.teens = parseInt(x / 10 % 10);//десятки
-                jbl.hundr = parseInt(x / 100);// сотни
-                return jbl;
+        /*   var jbl = {};
+          var num = +prompt('Введите число от 0 до 999');
+          function getNumberfrom(x) {
+              if (x > 0 && x < 1000) {
+                  jbl.units = x % 10;//единицы
+                  jbl.teens = parseInt(x / 10 % 10);//десятки
+                  jbl.hundr = parseInt(x / 100);// сотни
+                  return jbl;
+  
+              }
+              else {
+                  alert('Ошибка некорректнные данные');
+              }
+          }
+          getNumberfrom(num);
+          console.log(jbl);
+          alert('единиц в числе: ' + jbl.units + ' десятков в числе: ' + jbl.teens + ' coтен в числе: ' + jbl.hundr);
+  
+  
+          //2-ое задание
+            var goods = [
+                 {
+                     title: "Товар 1",
+                     price: 100,
+                     count: 35,
+                     discount: 10
+                 },
+                 {
+                     title: "Товар 2",
+                     price: 200,
+                     count: 7,
+                     discount: 10
+                 },
+                 {
+                     title: "Товар 3",
+                     price: 150,
+                     count: 10,
+                     discount: 10
+                 },
+     
+             ];
+             function countBasketPrice(goods) {
+     
+                 let sum = 0;
+                 for (let item of goods) {
+     
+                     sum += item.price * item.count;
+                     return sum;
+                 }
+             }
+             function PricebyDiscount(pricex) {
+                 let sum = 0
+                 for (let item of pricex) {
+                     sum += item.price * item.count * (100 - 10) / 100;
+                 }
+             }
+     
+     
+             alert("Стоимость всех товаров в корзине равно " + countBasketPrice(goods));
+             alert("Стоимость всех товаров в корзине c учетом скидки равно " + PricebyDiscount(pricex));*/
 
-            }
-            else {
-                alert('Ошибка некорректнные данные');
-            }
+
+        function Good(title, price, guantiti) { //функция конструктор
+            this.title = title;
+            this.price = price;
+            this.guantiti = guantiti;
         }
-        getNumberfrom(num);
-        console.log(jbl);
-        alert('единиц в числе: ' + jbl.units + ' десятков в числе: ' + jbl.teens + ' coтен в числе: ' + jbl.hundr);
-
-
-        //2-ое задание
-        var goods = [
-            {
-                title: "Товар 1",
-                price: 100,
-                count: 35,
-                discount: 10
-            },
-            {
-                title: "Товар 2",
-                price: 200,
-                count: 7,
-                discount: 10
-            },
-            {
-                title: "Товар 3",
-                price: 150,
-                count: 10,
-                discount: 10
-            },
-
+        const Cart = [
+            new Good('Футболка', 1200, 2),
+            new Good('Рубашка', 1700, 5),
+            new Good('Брюки', 1500, 7),
+            new Good('Джинсы', 1100, 4)
         ];
-        function countBasketPrice(goods) {
-
-            let sum = 0;
-            for (let item of goods) {
-
-                sum += item.price * item.count;
-                return sum;
+        console.log(Cart);
+        function getCartprice() {
+            let res = 0;
+            for (let good of Cart) {
+                res += good.price * good.guantiti;
             }
+            return res;
         }
-        function PricebyDiscount(pricex) {
-            let sum = 0
-            for (let item of pricex) {
-                sum += item.price * item.count * (100 - 10) / 100;
-            }
-        }
+        console.log(getCartprice());
 
 
-        alert("Стоимость всех товаров в корзине равно " + countBasketPrice(goods));
-        alert("Стоимость всех товаров в корзине c учетом скидки равно " + PricebyDiscount(pricex));
 
         //3 задание
 

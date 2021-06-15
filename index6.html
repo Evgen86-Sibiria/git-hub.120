@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение в DOM</title>
+</head>
+
+<body>
+    <div id="test-id">
+        <h1>Тестовая страница</h1>
+        <div class="test-class">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, quam.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, quam.</p>
+
+
+        </div>
+        <div class="test-class">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, quam.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, quam.</p>
+        </div>
+
+
+
+
+
+    </div>
+
+    <script>
+        'use strict'
+        // Поиск элементов
+        // console.log(document.getElementById('test-id'));  // находим элемент по его id
+        // console.dir(document.getElementById('test-id'));//выводим его как объект
+        // console.log(document.getElementsByClassName('test-class'));  // находим элементЫ по его КЛАССУ
+        // console.dir(document.getElementsByClassName('test-class'));//выводим его как объект
+        // console.log(document.getElementsByTagName('p')); //по тегу
+        // console.log(document.querySelector('.test-class:last-child'));//удобный способ
+        // console.log(document.querySelectorAll('.test-class'));//удобный способ
+        // const pTags = document.querySelectorAll('p');// получили все теги через цикл
+        // for (let i = 0; i < pTags.length; i++) {
+        //     console.log(pTags[i]);
+        //}
+        //как с ними работать
+
+        /*  const h1Tag = document.querySelector('h1');//.cloneNode(true);//.cloneNode(true) клонировали тег
+          // console.log(h1Tag.textContent);// взяли текст внутри
+          // h1Tag.textContent = '<h1>привитули <h1/>';// поменяли текст при помощи js все что в скобках
+          // h1Tag.innerText = '<p>привитули <p/>';// поменяли текст при помощи js все что в скобках
+          h1Tag.innerHTML = '<p>привитули <p/>';// поменяли текст при помощи js СОЗДАСТ ТЕГ
+          // h1Tag.textContent = h1Tag.textContent + '!';// добавили !
+          // h1Tag.textContent += '1';// то же самое что наверху
+          setInterval(() => h1Tag.textContent += '!', 3000);//ф-я через 2 сек появится привет
+          h1Tag.style.backgroundColor = 'red';
+          const div = document.createElement('div');//CОЗДАЛИ
+          console.log(div);
+          document.body.appendChild(div);//добавили в HTML
+          div.textContent = "gyhjkhjkh";
+          // var insertedElement = parentElement.insertBefore(newElement, referenceElement);//по порядку родит элемент,элемент котор нужно вставить и перед каким
+          const parentElement = document.getElementById('test-id');
+          const referenceElement = document.querySelector('.test-class:last-child');
+          parentElement.insertBefore(h1Tag, referenceElement);
+          // h1Tag.remove();//удалили
+          console.log(h1Tag.parentElement);//получили родителя
+          console.log(h1Tag.parentElement.children);//дети родителя
+          console.log(h1Tag.parentElement.children[1].querySelectorAll('p'));//в ребенке находим все теги 'p'*/
+
+        // тема события!!!!
+
+        //  function sayHello() {   //вызов событий
+        //      alert('Привет');
+        //   }
+
+        // h1Tag.onclick = sayHello;// ф-я без скобок ложится
+        // h1Tag.onclick = function sayHello() {//то же самое
+        //     alert('Привет');
+        // }
+        //   h1Tag.onclick = null;//удалить событие
+        // самый лучший вариант использовать спец методы ниже
+        // h1Tag.addEventListener('click', function () {
+        //      alert('Hello');
+        //  })
+        //   h1Tag.addEventListener('click', sayHello);//2 ф-я активируется
+        //   h1Tag.removeEventListener('click', sayHello);//2 ф-я деактивируется
+        //  h1Tag.removeEventListener('click', function () {//не удалится потомучто имеет другой адрес ссылки
+        //      alert('Hello');
+        // })  
+        const h1Tag = document.querySelector('h1');
+        h1Tag.addEventListener('click', function () {
+            console.log(this);
+        });
+
+    </script>
+
+</body>
+
+</html>
