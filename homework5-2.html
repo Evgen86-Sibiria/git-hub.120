@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 домашка</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        function Good(title, price, quantity) {
+            this.title = title;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+
+        const Car = [
+            new Good("Mercedes", 240000, 4),
+            new Good("Audi", 200000, 3),
+            new Good("Toyota", 130000, 7),
+            new Good("Nissan", 10000, 4)
+        ]
+        function getCarPrice() {
+            let res = 0;
+            for (let goods of car) {
+                res += (goods.price * goods.quantity);
+            }
+            return res;
+        }
+        console.log(getCarPrice());
+
+
+
+    </script>
+
+</body>
+
+</html>
